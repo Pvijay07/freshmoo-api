@@ -20,3 +20,13 @@ exports.updateOrderStatus = async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 };
+// Get wallet balance
+exports.getWalletBalance = async (req, res) => {
+    const { userId } = req.query;
+    try {
+        const wallet = await Wallet.getWallet(userId);
+        res.json({ balance: wallet.balance });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+  };

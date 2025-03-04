@@ -16,3 +16,5 @@ db.execute('SELECT 1')
     .catch((err) => {
         console.error('MySQL connection failed:', err);
     });
+
+    
