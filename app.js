@@ -5,6 +5,7 @@ const cors = require('cors');
 // Import routes
 const customerRoutes = require('./routes/customer');
 const deliveryRoutes = require('./routes/delivery');
+const paymentRoutes = require('./routes/paymentRoutes');
 
 // Create Express app
 const app = express();
@@ -16,6 +17,7 @@ app.use(cors()); // Enable CORS for all routes
 // Routes
 app.use('/api/customer', customerRoutes); // Customer routes
 app.use('/api/delivery', deliveryRoutes); // Delivery partner routes
+app.use('/api/payment', paymentRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
