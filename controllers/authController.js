@@ -1,5 +1,5 @@
 const User = require("../models/User");
-
+const jwt = require('jsonwebtoken');
 exports.SendOtp = async (req, res) => {
   const { number, role } = req.body;
   const otp = Math.floor(Math.random() * 9000) + 1000; // Generate a 4-digit OTP
@@ -34,7 +34,7 @@ exports.VerifyOtp = async (req, res) => {
     // Generate JWT token
     const token = jwt.sign(
       { id: user.id, number: user.number, role: user.role }, // Payload
-      SECRET_KEY, // Secret key
+      process.env.JWT_SECRET, // Secret key
       { expiresIn: "7d" } // Token expiry time
     );
 

@@ -8,7 +8,7 @@ const authenticateToken = (req, res, next) => {
   try {
     const verified = jwt.verify(
       token.replace("Bearer ", ""),
-      process.env.SECRET_KEY
+      process.env.JWT_SECRET
     );
     req.user = verified; // Attach user info to request
     next();
